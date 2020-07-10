@@ -1,0 +1,9 @@
+.jd_layout {
+    width: 100%;
+    /* 最大宽度 */
+    max-width: 640px;
+    /* 最小宽度 */
+    max-width: 320px;
+    margin: 0 auto;
+    background-color: #ccc;
+}
