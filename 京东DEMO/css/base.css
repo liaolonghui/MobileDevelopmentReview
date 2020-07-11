@@ -1,6 +1,6 @@
 /* 公共样式 */
 /* 1.样式重置 */
-html,body,ul,li,img,a,p,div {
+html,body,ul,li,img,a,p,div,form,input {
   padding: 0;
   margin: 0;
   /* 设置盒模型 */
