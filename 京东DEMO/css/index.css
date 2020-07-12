@@ -16,6 +16,7 @@
   position: fixed;
   background: #e92322;
   max-width: 640px;
+  z-index: 6;
 }
 .jd_logo {
   width: 56px;
@@ -54,4 +55,64 @@
   top: 10px;
   left: 80px;
   border-radius: 13px;
+}
+/* 轮播图样式 */
+.jd_banner {
+  padding-top: 40px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.jd_bannerImg {
+  width: 800%;
+}
+.jd_bannerImg > li {
+  width: 12.5%;
+  float: left;
+}
+.jd_bannerImg > li img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+.jd_bannerIndicator {
+  width: 118px;
+  height: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%);
+}
+.jd_bannerIndicator > li {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  float: left;
+  margin-left: 10px;
+}
+.jd_bannerIndicator > li:first-of-type {
+  margin-left: 0;
+}
+.jd_bannerIndicator > li.active {
+  background-color: #fff;
+}
+/* 导航块样式 */
+.jd_nav {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #eee;
+}
+.jd_nav > ul > li {
+  width: 20%;
+  float: left;
+  text-align: center;
+  margin-top: 5px;
+}
+.jd_nav > ul > li img {
+  width: 34.13px;
+  height: 34.13px;
+}
+.jd_nav > ul > li p {
+  line-height: 20px;
 }
