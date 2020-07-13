@@ -93,22 +93,83 @@ function bannerEffect(){
     // 偏移（定位值）要考虑到当前索引值
     imgBox.style.left = -index*bannerWidth + 'px';
   }
+  var timer = null;
   // 5.自动轮播(使用定时器)
-  var timer = setInterval(function(){
-    index++;
-    // 添加过渡效果
-    imgBox.style.transition = "left 0.5s ease-in-out";
-    // 偏移
-    imgBox.style.left = (-index*bannerWidth) + 'px';
-    // 要有延迟
-    setTimeout(function(){
-      // 判断是否到最后一张
-      if(index === count-1){
-        index=1;
-        // 偏移到指定位置(别忘了清除过渡效果)
-        imgBox.style.transition = "none";
-        imgBox.style.left = (-index*bannerWidth) + 'px';
+  var startTime = function(){
+    timer = setInterval(function(){
+      index++;
+      // 添加过渡效果
+      imgBox.style.transition = "left 0.5s ease-in-out";
+      // 偏移
+      imgBox.style.left = (-index*bannerWidth) + 'px';
+      // 要有延迟
+      setTimeout(function(){
+        // 判断是否到最后一张
+        if(index === count-1){
+          index=1;
+          // 偏移到指定位置(别忘了清除过渡效果)
+          imgBox.style.transition = "none";
+          imgBox.style.left = (-index*bannerWidth) + 'px';
+        }
+      },500);
+    },3000);
+  }
+  startTime();
+
+  // 6.实现手动轮播
+  // 1.记录手指的起始位置
+  // 2.记录手指在滑动过程中的位置，计算出偏移量，通过left样式实现图片偏移
+  // 3.松开手指后，判断当前滑动的距离，如果超出指定距离就翻页，否则回弹
+  var startX, moveX, distanceX;
+  imgBox.addEventListener("touchstart",function(e){
+    clearInterval(timer);
+    startX = e.targetTouches[0].clientX;
+  });
+  imgBox.addEventListener("touchmove",function(e){
+    moveX = e.targetTouches[0].clientX;
+    distanceX = moveX - startX;
+    //清除过渡效果,为了保证效果正常。
+    imgBox.style.transition = "none";
+    imgBox.style.left = -index*bannerWidth + distanceX + "px";
+  });
+  imgBox.addEventListener("touchend",function(e){
+    //在这里超过100px就翻页
+    if(Math.abs(distanceX) > 100){
+      //判断滑动的方向
+      if(distanceX > 0){
+        //上一张
+        index--;
+      }else {
+        //下一张
+        index++;
       }
-    },500);
-  },3000);
+      //翻页操作
+      imgBox.style.transition = "left 0.5s ease-in-out";
+      imgBox.style.left = -index*bannerWidth + "px";
+    }else if(Math.abs(distanceX) > 0){  //得保证用户确实进行了滑动操作
+      //回弹操作
+      imgBox.style.transition = "left 0.5s ease-in-out";
+      imgBox.style.left = -index*bannerWidth + "px";
+    }
+    //重新开启定时器
+    startTime();
+  });
+  // webkitTransitionEnd 可以监听当前元素的过渡效果执行完毕。
+  imgBox.addEventListener("webkitTransitionEnd",function(){
+    // 如果到了最后一张(索引count-1)就会回到索引1，如果到了第一张(索引0)就回到索引count-2。
+    if(index == count-1){
+      index = 1;
+      //清除过渡
+      imgBox.style.transition = "none";
+      //偏移
+      imgBox.style.left = -index*bannerWidth + "px";
+    }else if(index == 0){
+      index = count-2;
+      //清除过渡
+      imgBox.style.transition = "none";
+      //偏移
+      imgBox.style.left = -index*bannerWidth + "px";
+    }
+
+  });
 }
