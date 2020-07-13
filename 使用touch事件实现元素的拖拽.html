@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background: linear-gradient(to right,red,yellow);
+      }
+      .box2 {
+        left: 200px;
+        top: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">1</div>
+    <div class="box box2">2</div>
+
+    <script type="text/javascript">
+      var x, y, startX, startY, moveX, moveY, distanceX, distanceY;
+      //捕获
+      document.addEventListener('touchstart',function(e){
+        x = e.target.offsetLeft;
+        y = e.target.offsetTop;
+        startX = e.targetTouches[0].clientX;
+        startY = e.targetTouches[0].clientY;
+      });
+      document.addEventListener('touchmove',function(e){
+        moveX = e.targetTouches[0].clientX;
+        moveY = e.targetTouches[0].clientY;
+        //计算与上一次坐标的差异(手指的)
+        distanceX = moveX - startX;
+        distanceY = moveY - startY;
+        //设置偏移
+        e.target.style.left = x + distanceX + "px";
+        e.target.style.top = y + distanceY + "px";
+      });
+      document.addEventListener('touchend',function(e){
+
+      });
+    </script>
+  </body>
+</html>
