@@ -14,7 +14,7 @@
   /* 固定在顶部 */
   position: fixed;
   max-width: 640px;
-  background: #e92322;
+  background: rgba(233,35,34,0.5);
   z-index: 6;
 }
 .jd_logo {
