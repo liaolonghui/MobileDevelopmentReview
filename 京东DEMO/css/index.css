@@ -64,6 +64,7 @@
 }
 .jd_bannerImg {
   width: 800%;
+  position: relative;
 }
 .jd_bannerImg > li {
   width: 12.5%;
