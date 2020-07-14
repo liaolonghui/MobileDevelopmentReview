@@ -93,6 +93,18 @@ function bannerEffect(){
     // 偏移（定位值）要考虑到当前索引值
     imgBox.style.left = -index*bannerWidth + 'px';
   }
+
+  //实现点标记效果的函数
+  var setIndicator = function(index){
+    var indicators = banner.querySelector('ul:last-of-type').querySelectorAll('li');
+    //清除其他li元素的active样式(直接把所有li元素的active样式清除即可)
+    for(var j=0; j<indicators.length; j++){
+      indicators[j].classList.remove("active");
+    }
+    //为当前li元素添加active样式
+    indicators[index-1].classList.add("active");
+  }
+
   var timer = null;
   // 5.自动轮播(使用定时器)
   var startTime = function(){
@@ -121,18 +133,27 @@ function bannerEffect(){
   // 2.记录手指在滑动过程中的位置，计算出偏移量，通过left样式实现图片偏移
   // 3.松开手指后，判断当前滑动的距离，如果超出指定距离就翻页，否则回弹
   var startX, moveX, distanceX;
+  //创建一个变量来标记当前过渡效果是否已经执行完毕
+  var isEnd = true;
+
   imgBox.addEventListener("touchstart",function(e){
     clearInterval(timer);
     startX = e.targetTouches[0].clientX;
   });
   imgBox.addEventListener("touchmove",function(e){
-    moveX = e.targetTouches[0].clientX;
-    distanceX = moveX - startX;
-    //清除过渡效果,为了保证效果正常。
-    imgBox.style.transition = "none";
-    imgBox.style.left = -index*bannerWidth + distanceX + "px";
+    //过渡效果已经结束才做下一次的拖拽事件
+    if(isEnd){
+      moveX = e.targetTouches[0].clientX;
+      distanceX = moveX - startX;
+      //清除过渡效果,为了保证效果正常。
+      imgBox.style.transition = "none";
+      imgBox.style.left = -index*bannerWidth + distanceX + "px";
+    }
   });
   imgBox.addEventListener("touchend",function(e){
+    //松开手指来标记当前过渡效果正在执行
+    isEnd = false;
+
     //在这里超过100px就翻页
     if(Math.abs(distanceX) > 100){
       //判断滑动的方向
@@ -150,11 +171,24 @@ function bannerEffect(){
       //回弹操作
       imgBox.style.transition = "left 0.5s ease-in-out";
       imgBox.style.left = -index*bannerWidth + "px";
+    }else if(distanceX == 0){
+      //没有进行滑动操作就没有过渡效果，直接让isEnd为true
+      //延迟0.5s后再标记过渡效果执行完毕，让用户不能一直滑动，有个停顿的效果。
+      setTimeout(function(){
+        //标记过渡效果已经执行完毕
+        isEnd = true;
+      },500);
     }
+    //将上一次move所产生的数据重置为0
+    startX = 0;
+    moveX = 0;
+    distanceX = 0;
     //重新开启定时器
     startTime();
   });
   // webkitTransitionEnd 可以监听当前元素的过渡效果执行完毕。
+  //但如果手滑动过快时会出现bug，因为过渡还没结束就滑动到了下一张，所以不会触发webkitTransitionEnd。
+  //此时需要在前面做一些处理，让过渡效果执行完才能执行下一个拖拽事件。并且要在touchend事件执行时重置distanceX等数值。
   imgBox.addEventListener("webkitTransitionEnd",function(){
     // 如果到了最后一张(索引count-1)就会回到索引1，如果到了第一张(索引0)就回到索引count-2。
     if(index == count-1){
@@ -170,6 +204,15 @@ function bannerEffect(){
       //偏移
       imgBox.style.left = -index*bannerWidth + "px";
     }
+
+    //设置点标记
+    setIndicator(index);
+
+    //过渡效果执行完后延迟0.5s后再标记过渡效果执行完毕，让用户不能一直滑动，有个停顿的效果。
+    setTimeout(function(){
+      //标记过渡效果已经执行完毕
+      isEnd = true;
+    },500);
 
   });
 }
