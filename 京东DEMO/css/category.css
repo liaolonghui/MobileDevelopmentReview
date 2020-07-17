@@ -1,0 +1,38 @@
+/* 全屏页面的实现 */
+html,body {
+  width: 100%;
+  height: 100%;
+}
+.ct_layout {
+  width: 100%;
+  height: 100%;
+}
+
+/* 头部搜索块 */
+.ct_header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+  background-color: #eee;
+  position: absolute;
+}
+
+/* 主体内容块 */
+.ct_content {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  background-color: green;
+}
+.ct_content .ct_cLeft {
+  width: 100px;
+  height: 100%;
+  background-color: red;
+  float: left;
+}
+.ct_content .ct_cRight {
+  height: 100%;
+  background-color: blue;
+  /* margin的妙用 */
+  margin-left: 100px;
+}
