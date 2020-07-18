@@ -65,8 +65,45 @@ window.onload = function(){
     lis[i].index = i;
   }
 
-  //绑定移动端的tap事件
-  itcast.tap(ulBox,function(e){
+  //绑定移动端的tap事件(自己使用touch事件实现tap)具体tap实现在common.js中
+  // itcast.tap(ulBox,function(e){
+  //   //1.修改li元素的样式
+  //   for (var i=0; i<lis.length; i++) {
+  //     lis[i].classList.remove("active");
+  //   }
+  //   var li = e.target.parentNode;
+  //   var liHeight = li.offsetHeight;
+  //   li.classList.add("active");
+  //   //2.移动当前的li元素到父容器的最顶部，但是不能超出之前设定了静止状态下的最小top值
+  //   //点第几(索引)个就偏移几(索引)个li元素的高度
+  //   var index = li.index;
+  //   ulBox.style.transition = "top 0.5s";
+  //   //判断是否小于minTop
+  //   if(-index*liHeight < minTop){
+  //     ulBox.style.top = minTop + "px";
+  //     //别忘了记录当前偏移值
+  //     currentY = minTop;
+  //   }else{
+  //     ulBox.style.top = -index*liHeight + "px";
+  //     //别忘了记录当前偏移值
+  //     currentY = -index*liHeight;
+  //   }
+  // });
+
+  //如果是使用jquery或者zepto可用下面方式绑定fastclick
+  // $(function() {
+  // 	FastClick.attach(document.body);
+  // });
+
+  //先绑定fastclick
+  if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+      //参数可以是任意的dom元素，如果写document.body说明会将document.body下的所有元素都绑定fastclick
+      FastClick.attach(document.body);
+    }, false);
+  }
+  //使用fastclick实现tap(click)
+  ulBox.addEventListener("click",function(e){
     //1.修改li元素的样式
     for (var i=0; i<lis.length; i++) {
       lis[i].classList.remove("active");
@@ -90,4 +127,4 @@ window.onload = function(){
     }
   });
 
-}
+};

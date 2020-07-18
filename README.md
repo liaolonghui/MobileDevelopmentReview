@@ -13,3 +13,6 @@ JS工具库
 
 ## bootstrap
 一款由Twitter推出的前端开源框架。
+
+### 一些插件的使用
+fastclick,iscroll,swipe,swiper等插件的使用，节省开发时间。

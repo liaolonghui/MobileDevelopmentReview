@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <style media="screen">
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .jd_banner {
+        width: 100%;
+        min-width: 320px;
+        max-width: 640px;
+        overflow: hidden;
+        visibility: hidden;
+        position: relative;
+      }
+      .jd_bannerImg {
+        overflow: hidden;
+        position: relative;
+      }
+      .jd_bannerImg > li {
+        float:left;
+        width:100%;
+        position: relative;
+      }
+      .jd_bannerImg > li img {
+        width: 100%;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jd_banner">
+      <ul class="jd_bannerImg">
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/01.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/02.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/03.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/04.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/05.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/06.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/07.dpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="./uploads/08.dpg" alt="">
+          </a>
+        </li>
+      </ul>
+      <ul class="jd_bannerIndicator">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <input type="button" value="上一张" id="prev">
+    <input type="button" value="下一张" id="next">-
+
+    <script src="./js/Swipe-master/swipe.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      window.mySwipe = new Swipe(document.querySelector('.jd_banner'), {
+        startSlide: 0,  //默认显示哪一张
+        speed: 400,    //速度
+        auto: 3000,   //自动轮播
+        continuous: true,   //是否无限轮播
+        disableScroll: false,   //是否禁止滚动
+        stopPropagation: false,
+        callback: function(index, elem) {},
+        transitionEnd: function(index, elem) {}
+      });
+
+      document.getElementById('prev').onclick = function(){
+        window.mySwipe.prev();
+      }
+      document.getElementById('next').onclick = function(){
+        window.mySwipe.next();
+      }
+    </script>
+
+  </body>
+</html>
