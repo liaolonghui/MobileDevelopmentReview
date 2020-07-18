@@ -60,6 +60,13 @@ html,body {
   height: 100%;
   float: left;
   overflow: hidden;
+  position: relative;
+}
+.ct_cLeft > ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .ct_cLeft > ul > li {
   height: 50px;
