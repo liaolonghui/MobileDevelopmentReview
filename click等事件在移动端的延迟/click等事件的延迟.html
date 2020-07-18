@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <style media="screen">
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      这与早期移动设备浏览器网页的内容非常小，为了增强用户体验苹果公司首先弄了双击放大操作,
+      于是click等在移动端会有300ms左右的延迟判断是否为双击事件。(不一定是300ms，这与手机性能等有关。)
+    </div>
+    <p>在移动端，移动事件优先。（如touch）</p>
+
+    <script type="text/javascript">
+      var div = document.querySelector("div");
+      div.addEventListener('click',function(){
+        alert('触发了click');
+      });
+    </script>
+  </body>
+</html>

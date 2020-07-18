@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <style media="screen">
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+
+    </div>
+
+    <script type="text/javascript">
+      //单击操作的特点
+      //1.单击只有一根手指
+      //2.判断手指开始触摸和松开手指的时间差异不能大于指定值 如300/150等（根据需求人群决定）
+      //3.保证没有滑动操作(可以有抖动，但要保证抖动距离在指定范围内)
+      var div = document.querySelector('div');
+      var startTime, startX, startY;
+      div.addEventListener('touchstart',function(e){
+        //判断是否只有一根手指
+        if(e.targetTouches.length > 1){
+          return;
+        }
+        // 记录手指开始时触摸的时候
+        startTime = Date.now();
+        //记录当前手指的坐标
+        startX = e.targetTouches[0].clientX;
+        startY = e.targetTouches[0].clientY;
+      });
+      //touchend是在手指松开时触发，意味着当前元素上已经没有手指对象了。
+      div.addEventListener('touchend',function(e){
+        //判断是否只有一根手指
+        if(e.changedTouches.length > 1){
+          return;
+        }
+        //判断时间的差异  (150ms)
+        if(Date.now()-startTime > 150){
+          //长按操作
+          return;
+        }
+        // 判断松开手指时的坐标与触摸开始时的坐标的距离差异
+        var endX = e.changedTouches[0].clientX;
+        var endY = e.changedTouches[0].clientY;
+        //这里暂且将距离的差异定为6
+        if(Math.abs(endX-startX)<6 && Math.abs(endY-startY)<6){
+          //算作单击事件
+          console.log('tap事件');
+          //执行tap事件触发之后的相关处理
+        }
+      });
+    </script>
+  </body>
+</html>

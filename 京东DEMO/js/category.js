@@ -7,6 +7,8 @@ window.onload = function(){
   var ulBox = ct_cLeft.querySelector('ul:first-of-type');
   // 获取列表的高度
   var ulBoxHeight = ulBox.offsetHeight;
+  //获取所有的li元素
+  var lis = ulBox.querySelectorAll('li');
 
   // 设置静止状态下的 最大的top值 与 最小的top值
   var maxTop = 0;
@@ -55,6 +57,37 @@ window.onload = function(){
       // 在松开手指之后要把滑动的距离记录下来(累加)
       currentY += distanceY;
     }
-
   });
+
+  //为每一个li元素添加一个索引值
+  for(var i=0; i<lis.length; i++){
+    // lis[i].setAttribute("index",i);
+    lis[i].index = i;
+  }
+
+  //绑定移动端的tap事件
+  itcast.tap(ulBox,function(e){
+    //1.修改li元素的样式
+    for (var i=0; i<lis.length; i++) {
+      lis[i].classList.remove("active");
+    }
+    var li = e.target.parentNode;
+    var liHeight = li.offsetHeight;
+    li.classList.add("active");
+    //2.移动当前的li元素到父容器的最顶部，但是不能超出之前设定了静止状态下的最小top值
+    //点第几(索引)个就偏移几(索引)个li元素的高度
+    var index = li.index;
+    ulBox.style.transition = "top 0.5s";
+    //判断是否小于minTop
+    if(-index*liHeight < minTop){
+      ulBox.style.top = minTop + "px";
+      //别忘了记录当前偏移值
+      currentY = minTop;
+    }else{
+      ulBox.style.top = -index*liHeight + "px";
+      //别忘了记录当前偏移值
+      currentY = -index*liHeight;
+    }
+  });
+
 }
