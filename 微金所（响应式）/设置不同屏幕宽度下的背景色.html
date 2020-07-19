@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <style>
+
+      /* 默认情况下 */
+      body {
+        background-color: red;
+      }
+
+      /* 使用媒体查询 */
+
+      /* w<768px */
+      @media screen and (max-width: 768px) {
+        body {
+          background-color: green;
+        }
+      }
+
+      /* w:768~992 */
+      @media screen and (min-width: 768px) and (max-width: 992px) {
+        body {
+          background-color: blue;
+        }
+      }
+
+      /* w:992~1200 */
+      @media screen and (min-width: 992px) and (max-width: 1200px) {
+        body {
+          background-color: pink;
+        }
+      }
+
+      /* w>1200 */
+      @media screen and (min-width: 1200px) {
+        body {
+          background-color: purple;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- 需求
+    默认情况下。body的背景色：red
+    w<768  green
+    w:768~992  blue
+    w:992~1200 pink
+    w>1200  purple
+    -->
+  </body>
+</html>
