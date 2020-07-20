@@ -1,0 +1,61 @@
+@color: #e92322;
+
+body {
+  background-color: @color;
+}
+
+/* 注释  会进行编译  */
+// 这也是,但是不会进行编译
+
+/* 变量 */
+@baseColor: #ddd;
+@width: 200px;
+@height: @width+100px;
+a {
+  color: @baseColor;
+}
+div {
+  width: @width;
+  height: @height;
+  background-color: @baseColor;
+}
+
+/* 混入  将一个定义好的样式引入到另一个样式中，类似于函数的调用 */
+.addRadius(@r:10px) {
+  border-radius: @r;
+  -webkit-border-radius: @r;
+  -moz-border-radius: @r;
+}
+div {
+  width: 200px;
+  height: 200px;
+  /* 引入已经写好的圆角样式 */
+  /* 传入参数 */
+  .addRadius(5px);
+}
+
+/* 嵌套 实现选择器的继承，可以减少代码量，同时使得代码结构更清晰 */
+.jd_header {
+  width: 100%;
+  height: 200px;
+  /* 不传参（border-radius默认值10px） */
+  .addRadius;
+  > div {
+    width: 100%;
+    &::after {
+      content: "";
+    }
+    > a {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    > h3 {
+      height: 20px;
+    }
+    ul {
+      list-style-type: none;
+    }
+  }
+}

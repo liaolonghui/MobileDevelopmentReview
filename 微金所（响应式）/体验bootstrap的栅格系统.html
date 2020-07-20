@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- 为了让IE以最新的标准进行页面的渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <style media="screen">
+      .container {
+        height: 200px;
+        background-color: #ccc;
+      }
+      .container .row {
+        height: 100%;
+      }
+      .container .row > div {
+        height: 100%;
+        border: 2px solid blue;
+        box-sizing: border-box;
+      }
+      .container .row > div > .row {
+        height: 100%;
+      }
+      .container .row > div > .row > div {
+        height: 100%;
+        border: 2px solid purple;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!--
+      w<768       12等分
+      w768~992    6等分
+      w992~1200   4等分
+      w>1200      3等分
+    -->
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-3"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-3"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-3"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-3"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-3"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-3"></div>
+      </div>
+    </div> -->
+
+    <!-- 还有类似于col-xs-offset-2  col-xs-push-2  col-xs-pull-2 的其他样式   -->
+    <!-- 可以列嵌套 (如下所示) -->
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4 hidden-lg"></div>
+            <div class="col-xs-4"></div>
+          </div>
+        </div>
+        <div class="col-xs-3"></div>
+      </div>
+    </div>
+
+
+    <!-- 注意：通过file://协议打开respond.js不生效 -->
+    <!--[if lt IE 9]>
+    <script src="./lib/html5shiv/html5shiv.min.js" charset="utf-8"></script>
+    <script src="./lib/respond/respond.min.js" charset="utf-8"></script>
+    <![endif]-->
+    <script src="./lib/jquery/jquery.min.js" charset="utf-8"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+
+  </body>
+</html>
