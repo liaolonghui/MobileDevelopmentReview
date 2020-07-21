@@ -2,18 +2,81 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title></title>
+    <title>微金所</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- 兼容一下IE8及以下的浏览器 -->
+    <!--[if lt IE9]>
+     <script src="./lib/respond/respond.min.js" charset="utf-8"></script>
+     <script src="./lib/html5shiv/html5shiv.min.js" charset="utf-8"></script>
+    <![endif]-->
   </head>
   <body>
      <!-- 头部块 -->
-     <header class="wjs_header">
-
+     <header class="wjs_header hidden-xs hidden-sm">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-2">
+             <a href="javascript:;" class="wjs_code">
+               <span class="wjs_icon wjs_icon_phone"></span>
+               <span>手机微金所</span>
+               <span class="glyphicon glyphicon-menu-down"></span>
+               <img src="./images/code.jpg" alt="下载手机微金所">
+             </a>
+           </div>
+           <div class="col-md-5">
+             <span class="wjs_icon wjs_icon_tel"></span>
+             <a href="javascript:;">客服热线：400-9999-281(工作日 9:00~18:00)</a>
+           </div>
+           <div class="col-md-2">
+             <a href="javascript:;">常见问题</a>&nbsp;&nbsp;
+             <a href="javascript:;">财富登录</a>
+           </div>
+           <div class="col-md-3">
+             <button type="button" class="btn btn-danger">免费注册</button>
+             <button type="button" class="btn btn-link">登录</button>
+           </div>
+         </div>
+       </div>
      </header>
      <!-- 导航块 -->
-     <nav class="wjs_nav">
+     <nav class="wjs_nav navbar navbar-default">
+       <div class="container">
+         <!-- 移动优先 -->
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <!-- logo -->
+           <a class="navbar-brand" href="javascript:;">
+             <span class="wjs_icon wjs_icon_logo"></span>
+             <span class="wjs_icon wjs_icon_text"></span>
+           </a>
+         </div>
 
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <!-- 只在md lg屏幕上显示 -->
+           <ul class="nav navbar-nav hidden-sm">
+             <li class="active"><a href="#">我要投资 <span class="sr-only">(current)</span></a></li>
+             <li><a href="#">我要借贷</a></li>
+             <li><a href="#">平台介绍</a></li>
+             <li><a href="#">新手专区</a></li>
+             <li><a href="#">最新动态</a></li>
+             <li><a href="#">微平台</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+             <li><a href="#">个人中心</a></li>
+           </ul>
+         </div>
+       </div>
      </nav>
      <!-- 轮播图 -->
      <div class="wjs_banner">
@@ -39,5 +102,8 @@
      <footer class="wjs_partner">
 
      </footer>
+
+     <script src="./lib/jquery/jquery.min.js" charset="utf-8"></script>
+     <script src="./lib/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
   </body>
 </html>

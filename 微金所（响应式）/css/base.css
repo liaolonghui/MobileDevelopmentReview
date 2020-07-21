@@ -25,8 +25,8 @@ m_r10 {
   font-family: 'wjs';
   src: url('../fonts/MiFie-Web-Font.eot');  /* IE9 */
   src: url('../fonts/MiFie-Web-Font.eot') format('embedded-opentype'),  /* IE6~IE8 */
-  url('../fonts/MiFie-Web-Font.woff') format('woff')  /* Chrome,firefox */
-  url('../fonts/MiFie-Web-Font.ttf') format('truetype')  /* chrome firefox opera Safari Android iOS4.2+* */
+  url('../fonts/MiFie-Web-Font.woff') format('woff'),  /* Chrome,firefox */
+  url('../fonts/MiFie-Web-Font.ttf') format('truetype'),  /* chrome firefox opera Safari Android iOS4.2+* */
   url('../fonts/MiFie-Web-Font.svg') format('svg');     /* iOS4.1- */
 }
 /* 自定义字体使用样式 */
