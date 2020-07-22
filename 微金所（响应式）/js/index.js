@@ -1,4 +1,7 @@
 $(function(){
+  // 初始化工具提示
+ $('[data-toggle="tooltip"]').tooltip();
+
   //获取当前所有的item
   var items = $(".carousel-inner .item");
   // 监听屏幕的大小改变, 使用JS动态创建轮播图item, 减少http请求。
@@ -40,4 +43,21 @@ $(function(){
       carousel.carousel("next");
     }
   });
+
+  // 计算产品块导航项的原始宽度
+  var ul = $(".wjs_product .nav-tabs");
+  var lis = ul.find("li");
+  var totalWidth = 0;
+  lis.each(function(index,value){
+    totalWidth = totalWidth+$(value).outerWidth(true);//其实只用innerWidth()即可
+  });
+  ul.width(totalWidth);
+  // 使用iscroll插件实现导航条的插件
+  var myScroll = new IScroll('.tabs_parent',{
+    // 设置水平滑动，同时不允许垂直滑动
+    scrollX: true,
+    scrollY: false
+  });
+
+
 });

@@ -118,7 +118,7 @@
 /* 预约块 */
 .wjs_reserve {
   height: 60px;
-  line-height: 60px;
+  line-height: 58px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
@@ -131,4 +131,138 @@
 }
 .wjs_reserve a:hover {
   color: #e92322;
+}
+/* 产品块 */
+.wjs_product {
+  clear: both;
+  background-color: #eee;
+  padding: 20px;
+  /* 导航项样式的修改 */
+  /* 产品详情信息块样式  */
+}
+.wjs_product .tabs_parent {
+  width: 100%;
+  overflow: hidden;
+}
+.wjs_product .nav-tabs > li {
+  margin-bottom: 0;
+  padding: 0px 15px;
+}
+.wjs_product .nav-tabs > li > a {
+  line-height: 50px;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+.wjs_product .nav-tabs > li > a:hover {
+  border-bottom: 3px solid #e92322;
+}
+.wjs_product .nav-tabs > li.active > a,
+.wjs_product .nav-tabs > li.active a:hover,
+.wjs_product .nav-tabs > li.active a:focus {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  border-bottom: 3px solid #e92322;
+}
+.wjs_product .wjs_pBox {
+  height: 150px;
+  margin-top: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  /* 设置当前active样式 */
+}
+.wjs_product .wjs_pBox .wjs_pLeft {
+  margin-right: 100px;
+  height: 150px;
+  padding-top: 10px;
+  font-size: 12px;
+}
+.wjs_product .wjs_pBox .wjs_pLeft > p {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+.wjs_product .wjs_pBox .wjs_pLeft .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.wjs_product .wjs_pBox .wjs_pLeft .row div:nth-of-type(even) {
+  text-align: right;
+}
+.wjs_product .wjs_pBox .wjs_pRight {
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  border-left: 1px dashed #ccc;
+  text-align: center;
+  padding-top: 30px;
+}
+.wjs_product .wjs_pBox .wjs_pRight > .wjs_tip {
+  width: 100%;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.wjs_product .wjs_pBox .wjs_pRight > .wjs_tip > span {
+  cursor: pointer;
+}
+.wjs_product .wjs_pBox .wjs_pRight > .wjs_tip > span:first-of-type {
+  color: red;
+  border: 1px solid red;
+}
+.wjs_product .wjs_pBox .wjs_pRight > .wjs_tip > span:last-of-type {
+  color: blue;
+  border: 1px solid blue;
+}
+.wjs_product .wjs_pBox .wjs_pRight > b {
+  font-size: 40px;
+  color: #e92322;
+}
+.wjs_product .wjs_pBox .wjs_pRight > sub {
+  color: #e92322;
+  bottom: 0;
+}
+.wjs_product .wjs_pBox .wjs_pRight::before,
+.wjs_product .wjs_pBox .wjs_pRight::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #eee;
+  position: absolute;
+  left: -5px;
+}
+.wjs_product .wjs_pBox .wjs_pRight::before {
+  top: -5px;
+  box-shadow: 0px -1px 1px #ddd inset;
+}
+.wjs_product .wjs_pBox .wjs_pRight::after {
+  bottom: -5px;
+  box-shadow: 0px 1px 1px #ddd inset;
+}
+.wjs_product .wjs_pBox.active {
+  background-color: #e92322;
+}
+.wjs_product .wjs_pBox.active .wjs_pLeft {
+  color: #fff;
+  position: relative;
+  /* 使用伪元素添加左上角的标记 */
+}
+.wjs_product .wjs_pBox.active .wjs_pLeft::before {
+  content: "\e915";
+  /* 一定要记得设置字体 */
+  font-family: "wjs";
+  position: absolute;
+  left: 0;
+  top: -6px;
+  font-size: 25px;
+}
+.wjs_product .wjs_pBox.active .wjs_pRight > b,
+.wjs_product .wjs_pBox.active .wjs_pRight sub,
+.wjs_product .wjs_pBox.active .wjs_pRight p {
+  color: #fff;
 }
