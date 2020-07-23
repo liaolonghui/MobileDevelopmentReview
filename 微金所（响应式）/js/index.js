@@ -13,14 +13,14 @@ $(function(){
         // 获取自定义属性中存储的图片路径
         var imgSrc = item.data("largeImage");
         // 先创建一个a标签元素，然后再添加css样式
-        item.html($('<a href="javascript:;" class="pcImg"></a>').css("background-image","url("+imgSrc+")"));
+        item.html($('<a href="./404.html" target="_blank" class="pcImg"></a>').css("background-image","url("+imgSrc+")"));
       });
     }else{
       $(items).each(function(index,value){
         var item = $(this);
         // 获取自定义属性中存储的图片路径
         var imgSrc = item.data("smallImage");
-        item.html('<a href="javascript:;" class="mobileImg"><img src="'+imgSrc+'" alt="..."></a>');
+        item.html('<a href="./404.html" target="_blank" class="mobileImg"><img src="'+imgSrc+'" alt="..."></a>');
       });
     }
   }).trigger("resize");

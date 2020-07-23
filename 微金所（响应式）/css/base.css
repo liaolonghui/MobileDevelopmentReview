@@ -50,16 +50,16 @@ m_r10 {
 .wjs_icon_text::before {
   content: '\e93e';
 }
-.wjs_icon_new01::before {
+.wjs_icon_news01::before {
   content: '\e90e';
 }
-.wjs_icon_new02::before {
+.wjs_icon_news02::before {
   content: '\e90f';
 }
-.wjs_icon_new03::before {
+.wjs_icon_news03::before {
   content: '\e910';
 }
-.wjs_icon_new04::before {
+.wjs_icon_news04::before {
   content: '\e911';
 }
 .wjs_icon_partner01::before {

@@ -266,3 +266,107 @@
 .wjs_product .wjs_pBox.active .wjs_pRight p {
   color: #fff;
 }
+/* 新闻块 */
+.wjs_news {
+  padding: 20px;
+  /* 添加虚线边框 */
+  /* 新闻列表 */
+}
+.wjs_news .wjs_nTitle {
+  line-height: 50px;
+  font-size: 25px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  position: relative;
+}
+.wjs_news .wjs_nTitle::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  position: absolute;
+  bottom: -4px;
+  right: -8px;
+}
+.wjs_news .wjs_newsLine {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  border-left: 1px dashed #e92322;
+  left: 45px;
+  top: 0;
+}
+.wjs_news .nav-tabs {
+  border-bottom: none;
+  position: relative;
+  /* 使用伪元素添加虚线 伪元素设置%宽高时，父元素必须有具体宽高值 */
+  /* 使用媒体查询设置768~992之间的li元素样式 */
+  /* 使用媒体查询设置小于768的li元素样式 */
+}
+.wjs_news .nav-tabs > li {
+  margin-bottom: 60px;
+}
+.wjs_news .nav-tabs > li > a {
+  background-color: #ccc;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.wjs_news .nav-tabs > li > a:hover {
+  background-color: #e92322;
+}
+.wjs_news .nav-tabs > li.active > a,
+.wjs_news .nav-tabs > li.active a:hover,
+.wjs_news .nav-tabs > li.active a:focus {
+  border: none;
+  background-color: #e92322;
+}
+.wjs_news .nav-tabs > li .wjs_icon {
+  font-size: 30px;
+  color: #fff;
+}
+.wjs_news .nav-tabs > li:last-of-type {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .wjs_news .nav-tabs > li {
+    margin: 20px 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wjs_news .nav-tabs > li {
+    margin: 20px 0;
+    width: 25%;
+  }
+}
+.wjs_news .wjs_newsList {
+  list-style: none;
+}
+.wjs_news .wjs_newsList > li {
+  line-height: 60px;
+}
+.wjs_news .wjs_newsList > li > a:hover {
+  color: #e92322;
+}
+/* 合作伙伴 */
+.wjs_partner {
+  background-color: #eee;
+  padding: 20px;
+  text-align: center;
+}
+.wjs_partner h3 {
+  width: 100%;
+  text-align: center;
+}
+.wjs_partner ul {
+  list-style: none;
+  display: inline-block;
+}
+.wjs_partner ul > li {
+  float: left;
+  margin-left: 20px;
+}
+.wjs_partner .wjs_icon {
+  font-size: 80px;
+}
